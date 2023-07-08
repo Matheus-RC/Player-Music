@@ -1,0 +1,110 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #383838;
+    color: #ddd;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.retangulo{
+    padding:30px;
+    background-color: #515151;
+    border-radius: 3px;
+}
+
+.capa{
+    width: 300px;
+    height: 300px;
+}
+.descricao{
+    width: 300px;
+}
+.descricao h2,i{
+    margin: 5px;
+}
+
+.duracao{
+    width:300px;
+    margin-top: 25px;
+}
+
+
+
+.tempo{
+    display:flex;
+    width: 300px;
+    justify-content: space-between;
+}
+
+.barra{
+    width: 300px;
+    height: 5px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    background-color: #383838;
+}
+.ponto{
+    width: 20px;
+    height: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+    position: absolute;
+    left: -2%;
+    cursor: pointer;
+}
+
+.time-bar{
+    height: 5px;
+    width: 100%;
+    border-radius: 5px;
+
+}
+
+progress::-webkit-progress-value {
+    border-radius: 5px;
+    background-color:#eee;
+}
+
+
+
+.player{
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    align-items: center;
+    background-color: #ddd;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+
+.play, .pause{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.next, .return{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.pause{
+    display: none;
+}
+
+.efeito:hover{
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
