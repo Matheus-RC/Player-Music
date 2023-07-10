@@ -48,9 +48,11 @@ function atualizarBarra(){
     var proporcao = music.currentTime / duration;
     fim.textContent = converteMinutos(Math.floor(music.duration));
     bar.value = proporcao;
-    console.log(proporcao);
     point.style.left = Math.floor(proporcao * 100) + '%';
     inicio.textContent =  converteMinutos(Math.floor(music.currentTime)); 
+    if(proporcao == 1){
+        pausarMusica();
+    }
 }
 
 function converteMinutos(segundos){
