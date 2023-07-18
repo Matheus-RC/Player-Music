@@ -28,6 +28,7 @@ ret.addEventListener('click',retornaMusica);
 barra.addEventListener('mousedown', retiraEventoMusica);
 barra.addEventListener('touchstart', retiraEventoMusica);
 barra.addEventListener('click', clicaBarraMusica);
+barra.addEventListener('touchend', clicaBarraMusica);
 music.addEventListener('timeupdate', atualizaValoresGerais);
 
 //Váriável para controlar o indice do vetor de músicas
