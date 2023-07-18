@@ -23,12 +23,13 @@ play.addEventListener('click', tocarMusica);
 pause.addEventListener('click',pausarMusica);
 next.addEventListener('click',avancaMusica);
 ret.addEventListener('click',retornaMusica);
-barra.addEventListener('click', barraMusica);
-music.addEventListener('timeupdate', atualizarBarra);
+barra.addEventListener('mousedown', retiraEventoMusica);
+barra.addEventListener('click', clicaBarraMusica);
+music.addEventListener('timeupdate', atualizaValoresGerais);
 
 
 let index_musica = 0;
-inativaButton();
+VerificaInativaButton();
 
 window.onload = function (){
     carregaMusica(index_musica);
@@ -45,17 +46,32 @@ function pausarMusica(){
     play.style.display = "inline";
 }
 
+function atualizaValoresGerais(){
+    atualizarBarra();
+    atualizaValorInicio();
+}
+
 function atualizarBarra(){
     var duration = music.duration;
-    fim.textContent = converteMinutos(Math.floor(music.duration));
     barra.value = music.currentTime;
-    inicio.textContent =  converteMinutos(Math.floor(music.currentTime)); 
     if(duration == music.currentTime){
         pausarMusica();
     }
 }
 
-function barraMusica(){
+function atualizaValorFim(){
+    fim.textContent = converteMinutos(Math.floor(music.duration));
+}
+
+function atualizaValorInicio(){
+    inicio.textContent =  converteMinutos(Math.floor(music.currentTime)); 
+}
+
+function retiraEventoMusica(){
+    music.removeEventListener('timeupdate', atualizaValoresGerais);
+}
+
+function clicaBarraMusica(){
     var tocando = true;
     if(music.paused){
         music.pause();
@@ -66,6 +82,7 @@ function barraMusica(){
     if(tocando == true){
         music.play();
     }
+    music.addEventListener('timeupdate', atualizaValoresGerais);
 }
 
 function converteMinutos(segundos){
@@ -85,7 +102,8 @@ function carregaMusica(index){
         nameMusic.textContent = musicas[index].musica;
         artista.textContent = musicas[index].artista;
         barra.max = music.duration;
-        atualizarBarra();
+        atualizaValorInicio();
+        atualizaValorFim();
     } );
 }
 
@@ -97,7 +115,7 @@ function retornaMusica(){
             tocar = false;
         }
         carregaMusica(index_musica);
-        inativaButton();
+        VerificaInativaButton();
         if (tocar){
             tocarMusica();
         }
@@ -112,14 +130,14 @@ function avancaMusica(){
             tocar = false;
         }
         carregaMusica(index_musica);
-        inativaButton();
+        VerificaInativaButton();
         if (tocar){
             tocarMusica();
         }
     }
 }
 
-function inativaButton(){
+function VerificaInativaButton(){
     if(index_musica == 0){
         ret.style.opacity = 0.3;
     }else{

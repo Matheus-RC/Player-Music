@@ -35,7 +35,6 @@ body, html{
 }
 
 
-
 .tempo{
     display:flex;
     width: 300px;
@@ -44,22 +43,7 @@ body, html{
 
 .barra{
     width: 300px;
-    height: 5px;
-    border: 1px solid #eee;
-    border-radius: 5px;
     display: flex;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-    background-color: #383838;
-}
-.ponto{
-    width: 20px;
-    height: 20px;
-    background-color: #eee;
-    border-radius: 50%;
-    position: absolute;
-    left: -2%;
     cursor: pointer;
 }
 
@@ -69,13 +53,6 @@ body, html{
     border-radius: 5px;
 
 }
-
-progress::-webkit-progress-value {
-    border-radius: 5px;
-    background-color:#eee;
-}
-
-
 
 .player{
     width: 300px;
