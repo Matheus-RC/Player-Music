@@ -26,6 +26,7 @@ pause.addEventListener('click',pausarMusica);
 next.addEventListener('click',avancaMusica);
 ret.addEventListener('click',retornaMusica);
 barra.addEventListener('mousedown', retiraEventoMusica);
+barra.addEventListener('touchstart', retiraEventoMusica);
 barra.addEventListener('click', clicaBarraMusica);
 music.addEventListener('timeupdate', atualizaValoresGerais);
 
