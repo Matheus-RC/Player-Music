@@ -12,8 +12,7 @@ let play = document.querySelector('.play');
 let pause = document.querySelector('.pause');
 let next = document.querySelector('.next');
 let ret = document.querySelector('.return');
-let bar = document.querySelector('.time-bar');
-let point = document.querySelector('.ponto');
+let barra = document.querySelector('.barra');
 let inicio = document.querySelector('.inicio');
 let fim = document.querySelector('.fim');
 let capa = document.querySelector('.capa');
@@ -24,7 +23,10 @@ play.addEventListener('click', tocarMusica);
 pause.addEventListener('click',pausarMusica);
 next.addEventListener('click',avancaMusica);
 ret.addEventListener('click',retornaMusica);
+barra.addEventListener('click', barraMusica);
 music.addEventListener('timeupdate', atualizarBarra);
+
+
 let index_musica = 0;
 inativaButton();
 
@@ -45,13 +47,24 @@ function pausarMusica(){
 
 function atualizarBarra(){
     var duration = music.duration;
-    var proporcao = music.currentTime / duration;
     fim.textContent = converteMinutos(Math.floor(music.duration));
-    bar.value = proporcao;
-    point.style.left = Math.floor(proporcao * 100) + '%';
+    barra.value = music.currentTime;
     inicio.textContent =  converteMinutos(Math.floor(music.currentTime)); 
-    if(proporcao == 1){
+    if(duration == music.currentTime){
         pausarMusica();
+    }
+}
+
+function barraMusica(){
+    var tocando = true;
+    if(music.paused){
+        music.pause();
+        tocando = false;
+    }
+    music.currentTime =  barra.value;
+    atualizarBarra();
+    if(tocando == true){
+        music.play();
     }
 }
 
@@ -71,6 +84,7 @@ function carregaMusica(index){
         capa.src = musicas[index].img;
         nameMusic.textContent = musicas[index].musica;
         artista.textContent = musicas[index].artista;
+        barra.max = music.duration;
         atualizarBarra();
     } );
 }
