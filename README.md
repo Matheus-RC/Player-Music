@@ -19,9 +19,6 @@ Um projeto que simula um player de musica onde é possível efetuar as operaçõ
 
 # Como executar o projeto
 
-## Back end
-Pré-requisitos: Java 11
-
 Basta abrir o arquivo index.htlm pelo navegador.
 
 # Autor
